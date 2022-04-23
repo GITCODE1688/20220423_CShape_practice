@@ -6,19 +6,31 @@ using System.Threading.Tasks;
 
 namespace Q02
     {
+    class weather
+        {
+        public double temperature { get; set; }
+        public bool goodWeather { get; set; }
+
+        public weather(double temperature, bool w)
+            {
+
+            }
+
+        }
     class Program
         {
         static void Main(string[] args)
             {
+            
             string inputWeekDay;
             string inputTemperature;
             bool goodWeather;
-            Console.WriteLine ( "請輸入週幾：" );
-            inputWeekDay = Console.ReadLine ( );
+            //Console.WriteLine ( "請輸入週幾：" );
+            //inputWeekDay = Console.ReadLine ( );
             Console.WriteLine ( "請輸入溫度：" );
             inputTemperature = Console.ReadLine ( );
-            Console.WriteLine ( "今天天氣好嗎？： (Y/N)" );
-            if (Console.ReadLine ( ) == "Y")
+            Console.WriteLine ( "今天天氣？：(1:晴天  2:雨天)" );
+            if (Console.ReadLine ( ) == "1")
                 {
                 goodWeather = true;
                 }
@@ -26,25 +38,23 @@ namespace Q02
                 {
                 goodWeather = false;
                 }
-            Console.WriteLine ( todo ( inputWeekDay, inputTemperature ,goodWeather) );
+            Console.WriteLine ( todo (  inputTemperature, goodWeather ) );
             Console.ReadKey ( );
             }
 
-        static string todo(string inputWeekDay, string inputTemperature,bool isGoodWeather)
+        static string todo( string inputTemperature, bool isGoodWeather)
             {
             int numInt;
             double numDouble;
-            int weekDay;
+            string weekDay = DateTime.Now.ToString ( "ddd");
             double temperature;
 
-            if (int.TryParse ( inputWeekDay, out numInt ) == false) { return "請輸入合理週幾！！"; }
-            weekDay = int.Parse ( inputWeekDay );
-            if (weekDay > 7) { return "請輸入合理週幾！！"; }
-
+           
+      
             if (double.TryParse ( inputTemperature, out numDouble ) == false) { return "請輸入合理溫度！！"; }
-            temperature = double.Parse ( inputTemperature );            
+            temperature = double.Parse ( inputTemperature );
 
-            if (weekDay >= 6)
+            if (weekDay =="週六" || weekDay == "週日")
                 {
                 if (temperature > 30)
                     {
